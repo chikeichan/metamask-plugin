@@ -258,6 +258,7 @@ function generateBundler(opts) {
   })
 
   return browserify(browserifyOpts)
+    .transform("babelify", {presets: ["es2015", "react"]})
 }
 
 function discTask(opts) {
