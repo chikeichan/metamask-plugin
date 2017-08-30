@@ -225,7 +225,7 @@ function confirmSeedWords () {
         }
 
         log.info('Seed word cache cleared. ' + account)
-        dispatch(actions.showAccountDetail(account))
+        dispatch(actions.showAccountsPage())
         resolve(account)
       })
     })
