@@ -46,10 +46,9 @@ function mapStateToProps (state) {
     accounts,
     address,
     keyrings,
-    isMascara,
     isInitialized,
     noActiveNotices,
-    seedWords
+    seedWords,
   } = state.metamask
   const selected = address || Object.keys(accounts)[0]
 
@@ -413,8 +412,8 @@ App.prototype.renderDropdown = function () {
   ])
 }
 
-App.prototype.renderLoadingIndicator = function({ isLoading, isLoadingNetwork, loadMessage }) {
-  const { isMascara } = this.props;
+App.prototype.renderLoadingIndicator = function ({ isLoading, isLoadingNetwork, loadMessage }) {
+  const { isMascara } = this.props
 
   return isMascara
     ? null
@@ -549,9 +548,11 @@ App.prototype.renderPrimary = function () {
 
     case 'buyEth':
       log.debug('rendering buy ether screen')
-      return isMascara
-        ? h(MascaraBuyEtherScreen, {key: 'buyEthView'})
-        : h(BuyView, {key: 'buyEthView'})
+      return h(BuyView, {key: 'buyEthView'})
+
+    case 'onboardingBuyEth':
+      log.debug('rendering onboarding buy ether screen')
+      return h(MascaraBuyEtherScreen, {key: 'buyEthView'})
 
     case 'qr':
       log.debug('rendering show qr screen')
