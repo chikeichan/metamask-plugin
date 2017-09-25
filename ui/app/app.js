@@ -548,6 +548,7 @@ App.prototype.renderPrimary = function () {
 
     case 'buyEth':
       log.debug('rendering buy ether screen')
+      return h(MascaraBuyEtherScreen, {key: 'buyEthView'})
       return h(BuyView, {key: 'buyEthView'})
 
     case 'onboardingBuyEth':
