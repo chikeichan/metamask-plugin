@@ -15,6 +15,14 @@ import {
   setCustomGasLimit,
 } from '../../ducks/gas.duck'
 
+const mapStateToProps = state => {
+  const { metamask: { knownMethodData, selectedAddress } } = state
+  return {
+    knownMethodData,
+    selectedAddress,
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     fetchBasicGasAndTimeEstimates: () => dispatch(fetchBasicGasAndTimeEstimates()),
@@ -64,6 +72,6 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 
 export default compose(
   withRouter,
-  connect(null, mapDispatchToProps, mergeProps),
+  connect(mapStateToProps, mapDispatchToProps, mergeProps),
   withMethodData,
 )(TransactionListItem)
