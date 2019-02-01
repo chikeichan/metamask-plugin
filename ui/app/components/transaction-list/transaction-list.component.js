@@ -98,7 +98,7 @@ export default class TransactionList extends PureComponent {
       ) : (
         <TransactionListItem
           transactionGroup={transactionGroup}
-          key={`${transactionGroup.nonce}:${index}:${selectedAddress}`}
+          key={`${transactionGroup.nonce || transactions[0].id}:${index}:${selectedAddress}`}
           showRetry={isPendingTx && this.shouldShowRetry(transactionGroup, isEarliestNonce)}
           showCancel={isPendingTx && this.shouldShowCancel(transactionGroup)}
           token={selectedToken}
